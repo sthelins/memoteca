@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import {Pensamento} from './../pensamento'
 
 @Component({
   selector: 'app-pensamento',
@@ -9,8 +10,9 @@ export class PensamentoComponent implements OnInit {
 
   //componente filho do componente lista-pensamento
   //esse input esta falando que agora esse componente vai receber informaçoes do componente pai
-  @Input() pensamento =
+  @Input() pensamento: Pensamento =
     {
+      id: 0,
       conteudo: 'I love Angular',
       autoria: "sthe",
       modelo: "modelo3"
@@ -20,6 +22,13 @@ export class PensamentoComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  larguraPensamento(): string {
+    if(this.pensamento.conteudo.length >= 256) {
+      return 'pensamento-g'
+    }
+    return 'pensamento-p'
   }
 
 }
